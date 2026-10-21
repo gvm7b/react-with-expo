@@ -1,14 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button,StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import CardDriver from './components/cardDriver';
+import { drivers } from './data/drivers';
+
 
 export default function App() {
   return (
     
     <View style={styles.container}>
-      <Image style={styles.logo} source={require('./bungas.png')} />
-      <Text style={styles.txt}>Bungas</Text>
-      <Button title='entrar'/>
-      <StatusBar style="auto" />
+      <Text style={styles.txt}>Super Trunfo Formula 1</Text>
+      <FlatList
+        data={drivers}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => <CardDriver driver={item}/>}
+      />
     </View>
   );
 }
@@ -16,12 +21,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor: '#08f500ff',
+    backgroundColor: '#ffffffff',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   },
   txt:{
-   color: '#f70727ff', 
+   color: '#000000ff', 
    fontSize: 20,
    fontWeight: "bold"
   },
